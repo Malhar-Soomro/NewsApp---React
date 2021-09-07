@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 export class NewsItem extends Component {
     render() {
         let { title, description, urlToImage, url, source } = this.props.articles;

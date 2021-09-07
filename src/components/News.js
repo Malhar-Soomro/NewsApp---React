@@ -17,12 +17,16 @@ export class News extends Component {
 
 
     fetchData = async () => {
+        this.props.setProgress(0);
         this.setState({
             loading: true
         })
         const url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
+        this.props.setProgress(30);
         const data = await fetch(url);
+        this.props.setProgress(70);
         const parsedData = await data.json();
+        this.props.setProgress(100);
         this.setState({
             articles: parsedData.articles,
             totalResults: parsedData.totalResults,
